@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itunes Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class = "header">
+        <span class="header_searchbar">
+            <input class="search-input" type="text" onkeypress="checkEnter(event)" placeholder="Search..">
+            <button class="search-btn" type="submit" onclick="search()"><img src="search.jpg" height="10"></button>
+        </span>
+
+    </div>
+
+    <div class = "intro">
+        <h6 class="intro_text">Search Albums by Artist/Name</h6>
+    </div>
+    
+    
+    <div class="results_albums">
+        <div class="albums_card">
+            <img class="album_art" src="search.jpg" height="100" width="100">
+            <p class="album_name">Album Name</p>
+        </div>
+
+    </div>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch-jsonp/1.0.6/fetch-jsonp.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
