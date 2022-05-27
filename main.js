@@ -2,6 +2,8 @@
 const searchBar = document.querySelector('.search-input');
 const introText = document.querySelector('.intro_text');
 const resultBody = document.querySelector('.results_albums');
+const loader = document.querySelector('.intro_loader');
+
 
 
 function checkEnter(e) {
@@ -29,11 +31,14 @@ function search() {
         introText.style.color = null
         searchBar.style.border = null
 
+        introText.style.display="none";
+        loader.style.display="inline";
+
         fetchJsonp(`https://itunes.apple.com/search?term=${term}&media=music&entity=album&attribute=artistTerm&limit=200`)
             .then((response) => response.json())
             .then((json) => {
-                console.log(json);
-                console.log(json.resultCount)
+                introText.style.display="inline";
+                loader.style.display="none";
                 introText.innerHTML = `${json.resultCount} results for "${term}"`
                 renderList(json.results)
             })

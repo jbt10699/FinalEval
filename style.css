@@ -36,6 +36,10 @@
     margin-right: 30%;
 }
 
+.intro_loader{
+    display: none;
+}
+
 .results_albums{
     position: relative;
     top: 40px;
