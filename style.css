@@ -5,6 +5,7 @@
 }
 
 .header{
+    z-index: 100;
     background-color: aqua;
     position: fixed;
     top: 0;
@@ -21,11 +22,6 @@
     padding-top: 5px;
 }
 
-.results{
-    display: flex;
-    margin-top: 6%;
-    background-color: coral;
-}
 
 .intro{
     position: relative;
