@@ -1,2 +1,2 @@
 # FinalEval
-Final evaluation fo Antra React Skill Enhancement Program
+Final evaluation for Antra React Skill Enhancement Program
