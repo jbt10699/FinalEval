@@ -60,10 +60,10 @@ function generateAllAlbums(json) {
 }
 
 function generateAlbumTmp(album) {
-    console.log("Album: " + album.collectionName);
     return `<div class="albums_card">
     <img class="album_art" src=${album.artworkUrl100}>
     <p class="album_name">${album.collectionName}</p>
+    <p class="album_copyright">${album.copyright}</p>
 </div>`
 }
 
