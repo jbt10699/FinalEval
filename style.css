@@ -70,3 +70,7 @@
 .album_copyright{
     font-style: italic;
 }
+
+.intro_add10{
+    display: none;
+}

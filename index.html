@@ -10,16 +10,16 @@
 <body>
     <div class = "header">
         <span class="header_searchbar">
-            <input class="search-input" type="text" onkeypress="checkEnter(event)" placeholder="Search...">
+            <input class="search-input" type="text" placeholder="Search...">
             <button class="search-btn" type="submit" onclick="search()"><img src="search.jpg" height="10" width="10"></button>
         </span>
-
     </div>
 
     <div class="body">
         <div class = "intro">
             <h6 class="intro_text">Search Albums by Artist/Name</h6>
             <img class="intro_loader" src="loader.gif" height="20" width="20">
+            <button class = "intro_add10" onclick="add10()">View next 10</button>
         </div>
         
         <div class="results_albums">

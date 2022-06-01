@@ -3,15 +3,43 @@ const searchBar = document.querySelector('.search-input');
 const introText = document.querySelector('.intro_text');
 const resultBody = document.querySelector('.results_albums');
 const loader = document.querySelector('.intro_loader');
+const addBtn = document.querySelector('.intro_add10')
 
+let totalResults = [];
+let shownResults = [];
 
-function checkEnter(e) {
-    //perform the search function if the user presses enter in the search bar
-    if (e.keyCode === 13) {
-        search()
-    }
+let timer;
+const waitTime = 1000;
+
+searchBar.addEventListener('keypress', handleKeyPress);
+searchBar.addEventListener('keyup', handleKeyUp);
+
+function handleKeyUp(e) {
+    window.clearTimeout(timer); // prevent errant multiple timeouts from being generated
+    timer = window.setTimeout(() => {
+    console.log('Typing done. Make request')
+    search();
+    }, waitTime);
 }
 
+function handleKeyPress(e) {
+    window.clearTimeout(timer);
+    console.log("typing...")
+}
+
+/*
+function checkEnter(e) {
+
+    console.log("typing")
+    //Reset the timer
+    clearTimeout(timer);
+
+    timer = setTimeout(() => {
+        console.log("time to go")
+        search();
+    }, waitTime)
+}
+*/
 
 function search() {
     let term = searchBar.value;
@@ -38,8 +66,18 @@ function search() {
                 //hide loading circle and show text once resolved
                 introText.style.display="inline";
                 loader.style.display="none";
+                addBtn.style.display="inline";
                 introText.innerHTML = `${json.resultCount} results for "${term}"`
-                renderList(json.results)
+                totalResults = json.results;
+                if(json.resultCount < 20){
+                    renderList(json.results)
+                }
+                else{
+                    for(let i=0; i<20; i++){
+                        shownResults[i] = json.results[i];
+                    }
+                    renderList(shownResults);
+                }
             })
 
     }
@@ -68,4 +106,26 @@ function generateAlbumTmp(album) {
 
 function render(template, element) {
     element.innerHTML = template;
+}
+
+function add10(){
+    
+    let totalLen = totalResults.length;
+    let shownLen = shownResults.length+10;
+
+    if(shownLen > totalLen){
+        for(let i=shownResults.length; i<totalLen; i++){
+            shownResults[i] = totalResults[i];
+            addBtn.style.display="none";
+        }
+    }
+    else{
+        for(let i=shownResults.length; i<shownLen; i++){
+            shownResults[i] = totalResults[i];
+        }
+    }
+
+    renderList(shownResults);
+
+
 }
